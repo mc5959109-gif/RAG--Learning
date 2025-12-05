@@ -1,0 +1,11 @@
+  __pycache__/
+*.pyc
+venv/
+multimodal_env/
+.env
+data/
+models/
+.DS_Store
+.vscode/
+
+
