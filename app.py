@@ -9,7 +9,7 @@ import subprocess
 # Disable HuggingFace tokenizer warnings
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-app = FastAPI(title="RAG with Ollama")
+app = FastAPI(title="RAG with Ollama"
 
 # Load vector store
 vs = VectorStore()
