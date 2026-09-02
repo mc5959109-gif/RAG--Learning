@@ -1,11 +1,22 @@
-  __pycache__/
-*.pyc
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environments
 venv/
+.venv/
 multimodal_env/
 .env
-data/
-models/
+
+# Generated index artifacts (rebuild with: python main.py build)
+faiss.index
+docs.npy
+index_meta.json
+
+# Text extracted from PDFs
+data/*.txt
+
+# Editor / OS
 .DS_Store
 .vscode/
-
-

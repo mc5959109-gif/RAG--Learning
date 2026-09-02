@@ -1,22 +1,11 @@
-import pdfplumber
-import os
+"""Kept for compatibility -- PDF conversion now lives in ingest.py.
 
-DATA_DIR = "data"
-PDF_DIR = "pdfs"  # put your PDFs here
+    python pdf_to_docs.py        # convert PDFs to data/*.txt (no index rebuild)
+"""
 
-os.makedirs(DATA_DIR, exist_ok=True)
+from ingest import convert_pdfs, find_pdfs  # noqa: F401  (re-exported)
 
-for pdf_file in os.listdir(PDF_DIR):
-    if pdf_file.endswith(".pdf"):
-        pdf_path = os.path.join(PDF_DIR, pdf_file)
-        with pdfplumber.open(pdf_path) as pdf:
-            full_text = ""
-            for page in pdf.pages:
-                full_text += page.extract_text() + "\n"
-        
-        # Save as text file for vector store
-        txt_file = os.path.join(DATA_DIR, pdf_file.replace(".pdf", ".txt"))
-        with open(txt_file, "w", encoding="utf8") as f:
-            f.write(full_text)
-        print(f"Saved {txt_file}")
-
+if __name__ == "__main__":
+    written = convert_pdfs()
+    print(f"Converted {len(written)} PDF(s). "
+          "Run 'python main.py build' to refresh the index.")
